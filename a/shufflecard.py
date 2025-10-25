@@ -1,0 +1,8 @@
+import random
+suits = ['Heart','Diamond','Clubs','Spades']
+ranks = ['2','3','4','5','6','7','8','9','10','Jack','Queen','King','Ace']
+deck = [rank + " of " + suit for suit in suits for rank in ranks]
+random.shuffle(deck)
+print("Shuffled Deck of Cards:")
+for card in deck:
+    print(card)

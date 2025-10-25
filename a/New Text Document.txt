@@ -1,0 +1,109 @@
+code:
+batsman(sachin).
+batsman(virat).
+batsman(rohit).
+batsman(dhoni).
+cricketer(X) :- batsman(X).
+sportsman(X) :- cricketer(X).
+famous(X) :- sportsman(X).
+queries:
+[cricket].
+cricketer(sachin).
+sportsman(virat).
+famous(X).
+
+code:
+teacher(anita).
+teacher(raj).
+teacher(meera).
+teacher(rahul).
+employee(X) :- teacher(X).
+human(X) :- employee(X).
+livingbeing(X) :- human(X).
+queries:
+human(anita).
+livingbeing(rahul).
+human(X).
+
+code:
+student(riya).
+student(amit).
+student(sam).
+student(neha).
+learner(X) :- student(X).
+knowledge_seeker(X) :- learner(X).
+future_professional(X) :- knowledge_seeker(X).
+queries:
+learner(riya).
+future_professional(amit).
+knowledge_seeker(X).
+
+code:
+dog(tommy).
+dog(bruno).
+dog(lucky).
+dog(shockey).
+animal(X) :- dog(X).
+pet(X) :- animal(X).
+livingbeing(X) :- pet(X).
+queries:
+pet(tommy).
+livingbeing(bruno).
+livingbeing(X).
+
+code:
+book(physics).
+book(math).
+book(history).
+book(computers).
+knowledge_source(X) :- book(X).
+educational_material(X) :- knowledge_source(X).
+valuable_resource(X) :- educational_material(X).
+queries:
+educational_material(math).
+valuable_resource(physics).
+valuable_resource(X).
+
+code:
+male(john).
+male(mike).
+male(david).
+female(lisa).
+female(susan).
+female(anna).
+parent(john, mike).
+parent(john, lisa).
+parent(susan, mike).
+parent(susan, lisa).
+parent(mike, david).
+parent(anna, david).
+father(F, C) :- male(F), parent(F, C).
+mother(M, C) :- female(M), parent(M, C).
+grandfather(GF, C) :- male(GF), parent(GF, P), parent(P, C).
+grandmother(GM, C) :- female(GM), parent(GM, P), parent(P, C).
+sibling(X, Y) :- parent(P, X), parent(P, Y), X \= Y.
+queries:
+father(john, mike).
+mother(susan, mike).
+grandfather(john, david).
+grandmother(susan, david).
+father(susan, anna).
+sibling(mike, lisa).
+(mike, david).
+
+code:
+student(rahul, math, 85).
+student(sita, math, 92).
+student(amit, science, 78).
+student(riya, science, 89).
+student(taran, english, 76).
+student(sita, english, 88).
+high_score(Name) :- student(Name, _, Marks), Marks > 80.
+math_student(Name) :- student(Name, math, _).
+topper(Subject, Name, Marks) :-student(Name, Subject, Marks),\+ (student(_, Subject, Marks2), Marks2 > Marks).
+queries:
+high_score(Name).
+math_student(Name).
+topper(math, Name, Marks).
+topper(science, Name, Marks).
+topper(english, Name, Marks).
